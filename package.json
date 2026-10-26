@@ -17,6 +17,7 @@
     "test:cms": "npm --prefix cms test",
     "test": "node --experimental-strip-types --test tests/*.test.mjs && npm --prefix frontend test",
     "typecheck": "npm run typecheck:site && npm run typecheck:cms",
-    "build": "npm run build:site && npm run build:cms"
+    "build": "npm run build:site && npm run build:cms",
+    "check:site": "node scripts/check-site.mjs"
   }
 }
