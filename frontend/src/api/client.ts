@@ -1,7 +1,12 @@
 import type { CommonResponse, PageResponse } from '../types/api'
 import { isCommon, parsePage } from './validation'
 
-const apiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:3000').replace(/\/+$/, '')
+// У режимі розробки /api проходить через проксі Vite.
+// Тому API працює також з телефона чи іншого ПК у локальній мережі.
+// У production VITE_API_URL має містити публічну адресу Payload CMS.
+const apiUrl = import.meta.env.DEV
+  ? ''
+  : (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '')
 
 // T — тип відповіді, що пройшла перевірку.
 async function getJson<T>(path: string, check: (value: unknown) => value is T): Promise<T> {

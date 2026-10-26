@@ -56,7 +56,9 @@ test('API /page populates collections and normalizes CMS media', async () => {
   const result = await response.json()
   assert.deepEqual(result.blocks.map((b) => b.type), ['hero', 'epochs', 'philosophers', 'quotes', 'unknown'])
   assert.equal(result.blocks[1].items[0].image.src, '/assets/antiquity.svg')
-  assert.equal(result.blocks[2].items[0].image.src, 'http://localhost:3000/api/media/file/socrates.jpg')
+  assert.equal(result.blocks[2].items[0].image.src, process.env.NODE_ENV === 'production'
+    ? 'http://localhost:3000/api/media/file/socrates.jpg'
+    : '/api/media/file/socrates.jpg')
   assert.equal(result.blocks[3].items[0].isParaphrase, true)
   assert.ok(calls.every((item) => item.overrideAccess === false))
   assert.doesNotMatch(JSON.stringify(result), /private/)

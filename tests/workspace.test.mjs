@@ -29,9 +29,9 @@ test('API returns data from CMS rather than static JSON', () => {
   assert.match(api, /mediaImage\(entry\.image/)
 })
 
-test('CMS uploaded images resolve against CMS origin', () => {
+test('CMS media paths use development proxy and production origin', () => {
   const api = read('cms/src/endpoints.ts')
-  assert.match(api, /url\.startsWith\('\/api\/media\/'\)/)
+  assert.match(api, /url\.startsWith\('\/api\/media\/file\/'\)/)
   assert.match(api, /CMS_URL/)
 })
 

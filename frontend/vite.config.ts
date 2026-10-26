@@ -1,2 +1,18 @@
 import { defineConfig } from 'vite'
-export default defineConfig({ server: { port: 5173, strictPort: true }, preview: { port: 4173 } })
+
+// Локальний проксі дозволяє відвідувачам сайту звертатися до CMS
+// через той самий хост та порт, на якому відкрито Vite.
+export default defineConfig({
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+    strictPort: true,
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+      },
+    },
+  },
+  preview: { port: 4173 },
+})

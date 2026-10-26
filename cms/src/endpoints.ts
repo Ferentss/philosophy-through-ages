@@ -38,11 +38,12 @@ export function mediaImage(value: unknown, backup: unknown = ''): { src: string;
   // SVG із frontend/public/assets є локальними ілюстраціями сайту.
   if (url.startsWith('/assets/')) return { src: url, alt: asString(media.alt) }
 
-  // Зображення з Media можуть мати шлях /api/media/file/...
-  // Такий шлях потрібно відкривати на CMS, а не на порту Vite.
-  if (url.startsWith('/api/media/')) {
+  // У development локальні файли віддаються через проксі Vite /api.
+  // У production окремий Vite-сайт звертається до публічної CMS.
+  if (url.startsWith('/api/media/file/')) {
     const cmsUrl = (process.env.CMS_URL || 'http://localhost:3000').replace(/\/+$/, '')
-    return { src: `${cmsUrl}${url}`, alt: asString(media.alt) }
+    const src = process.env.NODE_ENV === 'production' ? `${cmsUrl}${url}` : url
+    return { src, alt: asString(media.alt) }
   }
 
   // Адреси Vercel Blob / зовнішніх медіаресурсів.

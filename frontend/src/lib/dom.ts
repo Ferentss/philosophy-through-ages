@@ -28,7 +28,7 @@ export function heading(kicker: string, title: string, subtitle?: string): HTMLE
 }
 export function picture(src: string | undefined, alt: string, className: string, fallback: string): HTMLImageElement {
   const img = el('img', className)
-  img.src = src && (src.startsWith('/assets/') || /^https?:\/\//i.test(src)) ? src : fallback
+  img.src = src && (src.startsWith('/assets/') || src.startsWith('/api/media/file/') || /^https?:\/\//i.test(src)) ? src : fallback
   img.alt = alt
   img.loading = 'lazy'
   img.decoding = 'async'
