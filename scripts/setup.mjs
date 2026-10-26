@@ -27,7 +27,7 @@ for (const folder of ['cms', 'frontend']) {
 
   console.log(`\nВстановлення: ${folder}`)
   const command = process.platform === 'win32' ? 'npm.cmd' : 'npm'
-  const args = folder === 'cms' ? ['ci', '--legacy-peer-deps'] : ['ci']
+  const args = ['ci']
   const result = spawnSync(command, args, {
     cwd: directory,
     stdio: 'inherit',
