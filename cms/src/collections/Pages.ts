@@ -13,7 +13,8 @@ export const Pages: CollectionConfig = {
   admin: { useAsTitle: 'title' },
   access: { read: () => true, create: isAdmin, update: isAdmin, delete: isAdmin },
   fields: [
-    { name: 'path', type: 'text', required: true, unique: true, defaultValue: '/', label: 'Адреса сторінки' },
+    { name: 'path', type: 'text', required: true, unique: true, defaultValue: '/', label: 'Адреса сторінки',
+      validate: (value: unknown) => value === '/' || 'Цей сайт має тільки одну публічну сторінку: /' },
     { name: 'title', type: 'text', required: true, label: 'Назва сторінки' },
     { name: 'blocks', type: 'blocks', required: true, label: 'Блоки', blocks: [
       Hero, About, Features, EpochsBlock, PhilosophersBlock, Questions, QuotesBlock, ProjectInfo,

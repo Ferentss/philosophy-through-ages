@@ -30,7 +30,7 @@ function pickList(value: unknown, keys: string[]): Record<string, string>[] {
   return asArray(value).map((item) => pickText(item, keys))
 }
 
-function mediaImage(value: unknown, backup: unknown = ''): { src: string; alt: string } | null {
+export function mediaImage(value: unknown, backup: unknown = ''): { src: string; alt: string } | null {
   const media = asObject(value)
   const url = asString(media.url) || asString(backup)
   if (!url) return null
@@ -103,7 +103,11 @@ export const pageEndpoint: Endpoint = {
   path: '/page',
   method: 'get',
   handler: async (req) => {
-    const requestedPath = new URL(req.url).searchParams.get('path')
+    const params = new URL(req.url).searchParams
+    const paths = params.getAll('path')
+    const requestedPath = paths.length === 1 && [...params.keys()].every((key) => key === 'path')
+      ? paths[0]
+      : null
 
     if (!requestedPath || requestedPath.length > 128 || !/^\/[a-zA-Z0-9/_-]*$/.test(requestedPath)) {
       return Response.json({ error: 'Некоректний шлях сторінки.' }, { status: 400 })

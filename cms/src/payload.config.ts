@@ -17,6 +17,11 @@ import { commonEndpoint, pageEndpoint } from './endpoints'
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 const frontendOrigin = process.env.FRONTEND_URL || 'http://localhost:5173'
 
+// Завантаження на Vercel повинно використовувати постійне Blob-сховище.
+if (process.env.VERCEL === '1' && !process.env.BLOB_READ_WRITE_TOKEN) {
+  throw new Error('Для збереження Media у Vercel потрібно встановити BLOB_READ_WRITE_TOKEN')
+}
+
 export default buildConfig({
   admin: { user: Users.slug, importMap: { baseDir: dirname } },
   serverURL: process.env.CMS_URL || 'http://localhost:3000',
