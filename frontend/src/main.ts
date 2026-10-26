@@ -1,5 +1,5 @@
 import './styles/base.css'
-import { getCommon, getPage } from './api/client'
+import { ApiError, getCommon, getPage } from './api/client'
 import { header } from './layout/header'
 import { footer } from './layout/footer'
 import { renderBlocks } from './renderBlocks'
@@ -38,13 +38,19 @@ function showLoading(): void {
 
 function showError(error: unknown): void {
   const details = error instanceof Error ? error.message : 'Невідома помилка.'
+  const missingPage = error instanceof ApiError && error.status === 404
+  const serverError = error instanceof ApiError && error.status >= 500
   const panel = el('div', 'error-state')
 
   append(
     panel,
     text('span', 'error-symbol', '◇'),
-    text('h1', '', 'Не вдалося завантажити сайт'),
-    text('p', '', 'Перевірте підключення до CMS і спробуйте ще раз.'),
+    text('h1', '', missingPage ? 'Сайт ще не наповнено' : 'Не вдалося завантажити сайт'),
+    text('p', '', missingPage
+      ? 'Відкрийте другий термінал VS Code і виконайте npm run seed. Потім оновіть сторінку.'
+      : serverError
+        ? 'Payload CMS повернула помилку. Перевірте термінал, у якому працює сервер CMS.'
+        : 'Перевірте підключення до CMS і спробуйте ще раз.'),
     text('p', 'error-detail', details),
   )
 
@@ -63,6 +69,10 @@ async function start(): Promise<void> {
     // Promise.all завантажує обидва API одночасно.
     const [common, page] = await Promise.all([getCommon(), getPage('/')])
     if (currentRequest !== requestId) return
+
+    if (page.blocks.length === 0) {
+      throw new ApiError(404, 'Головна сторінка не містить опублікованих блоків. Додайте блоки у Payload Admin.')
+    }
 
     document.title = page.title || common.siteName
     const main = el('main')

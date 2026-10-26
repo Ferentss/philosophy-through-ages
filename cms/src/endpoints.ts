@@ -124,7 +124,10 @@ export const pageEndpoint: Endpoint = {
       })
       const page = result.docs[0]
       if (!page) {
-        return Response.json({ error: 'Сторінку не знайдено.' }, { status: 404 })
+        return Response.json({
+          error: 'Головну сторінку ще не створено. Запустіть npm run seed з кореня проєкту.',
+          code: requestedPath === '/' ? 'CONTENT_NOT_INITIALIZED' : 'PAGE_NOT_FOUND',
+        }, { status: 404 })
       }
 
       const sourceBlocks = asArray(asObject(page).blocks)
