@@ -20,7 +20,7 @@ export function header(common: CommonResponse): HTMLElement {
     toggle.textContent = open ? '✕' : '☰'
   }
   toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')))
-  nav.addEventListener('click', (event) => { if ((event.target as HTMLElement).closest('a')) setOpen(false) })
+  nav.addEventListener('click', (event) => { if (event.target instanceof Element && event.target.closest('a')) setOpen(false) })
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setOpen(false) })
   append(inner, brand, nav, toggle); top.append(inner)
   return top
