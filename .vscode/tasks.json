@@ -100,6 +100,19 @@
         "cwd": "${workspaceFolder}"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "8. Перевірити вміст публічного сайту",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "check:site"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
     }
   ]
 }
