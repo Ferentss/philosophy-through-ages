@@ -1,3 +1,8 @@
+import { redirect } from 'next/navigation'
+
+// CMS — окремий службовий застосунок. Публічна односторінкова
+// сторінка працює у Vite (порт 5173 під час локальної розробки).
 export default function Home() {
-  return <main><h1>Філософія крізь віки · CMS</h1><p>Адміністративна частина проєкту.</p><a href="/admin">Перейти до Payload Admin</a></main>
+  const site = process.env.FRONTEND_URL || 'http://localhost:5173'
+  redirect(site)
 }
