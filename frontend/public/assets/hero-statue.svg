@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="760" viewBox="0 0 650 760" role="img" aria-label="Антична скульптура">
+<defs>
+ <radialGradient id="background"><stop stop-color="#545046"/><stop offset=".61" stop-color="#30322f"/><stop offset="1" stop-color="#111719"/></radialGradient>
+ <linearGradient id="stone" x1="0" y1="0" x2="1" y2=".25"><stop stop-color="#ddd1b6"/><stop offset=".25" stop-color="#b6a990"/><stop offset=".53" stop-color="#807867"/><stop offset=".7" stop-color="#e3d6bc"/><stop offset="1" stop-color="#6a655c"/></linearGradient>
+ <linearGradient id="shadow" x1="0" y1="0" x2="1" y2=".2"><stop stop-color="#42423c"/><stop offset=".55" stop-color="#968c76"/><stop offset="1" stop-color="#48463e"/></linearGradient>
+ <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c8a97c" stop-opacity=".65"/><stop offset="1" stop-color="#c8a97c" stop-opacity="0"/></linearGradient>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".48" numOctaves="3" seed="11" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".14"/></feComponentTransfer></filter>
+ <filter id="blur"><feGaussianBlur stdDeviation="21"/></filter>
+ </defs>
+ <rect width="650" height="760" fill="url(#background)"/>
+ <g fill="none" stroke="#c8a97c" opacity=".25"><circle cx="325" cy="349" r="237"/><circle cx="325" cy="349" r="201"/><path d="M0 349H650M325 0V760" stroke-opacity=".13"/></g>
+ <path d="M110 760 Q110 592 234 577 Q240 532 240 463 H416 Q422 554 422 577 Q539 608 546 760Z" fill="url(#stone)" stroke="#e8dbc1" stroke-opacity=".32" stroke-width="4"/>
+ <path d="M149 760Q188 623 247 600Q299 661 325 646Q383 668 435 600Q494 638 513 760Z" fill="url(#shadow)" opacity=".82"/>
+ <path d="M260 478Q325 554 390 478L390 585Q325 646 260 585Z" fill="#b9ac92"/>
+ <path d="M227 266Q214 167 312 144Q422 121 435 266L429 387Q409 478 331 516Q253 494 234 395Z" fill="url(#stone)" stroke="#c1b69d" stroke-opacity=".7" stroke-width="3"/>
+ <path d="M234 250Q286 190 338 212Q390 182 429 250" fill="none" stroke="#555246" stroke-width="19" stroke-linecap="round" opacity=".82"/>
+ <path d="M256 304q28 -16 55 0m32 0q28 -16 55 0" fill="none" stroke="#585449" stroke-width="6" stroke-linecap="round"/>
+ <path d="M331 307q-7 76 11 79l-19 6" fill="none" stroke="#665f52" stroke-width="6"/>
+ <path d="M292 425q39 19 78 0" fill="none" stroke="#5d574b" stroke-width="5"/>
+ <path d="M243 380Q263 501 325 505Q396 501 422 380Q403 532 325 554Q234 524 243 380Z" fill="url(#shadow)" opacity=".66"/>
+ <path d="M221 288Q198 174 260 129Q370 76 435 174Q461 220 432 296" fill="none" stroke="#6e695c" stroke-width="35" stroke-linecap="round"/>
+ <path d="M227 288Q234 159 305 152M370 159Q429 220 422 281" fill="none" stroke="#c8bda5" stroke-opacity=".6" stroke-width="8"/>
+ <rect width="650" height="760" filter="url(#grain)" opacity=".24"/>
+ <rect x="15" y="15" width="620" height="730" rx="1" fill="none" stroke="url(#edge)" stroke-width="1"/>
+ </svg>

@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Відкрити сайт у Chrome (F5)",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend/src",
+      "sourceMaps": true
+    },
+    {
+      "name": "Відкрити Payload Admin у Chrome",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:3000/admin",
+      "webRoot": "${workspaceFolder}/cms/src",
+      "sourceMaps": true
+    }
+  ]
+}

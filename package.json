@@ -1,0 +1,20 @@
+{
+  "name": "philosophy-through-ages-workspace",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Робоча папка VS Code: Vite TypeScript + Payload CMS",
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "node scripts/dev.mjs",
+    "dev:cms": "npm --prefix cms run dev",
+    "dev:site": "npm --prefix frontend run dev",
+    "seed": "npm --prefix cms run seed",
+    "typecheck:site": "npm --prefix frontend run typecheck",
+    "typecheck:cms": "npm --prefix cms run typecheck",
+    "build:site": "npm --prefix frontend run build",
+    "build:cms": "npm --prefix cms run build",
+    "test:site": "npm --prefix frontend test",
+    "test:cms": "npm --prefix cms test",
+    "test": "node --test tests/*.test.mjs && npm --prefix frontend test"
+  }
+}
