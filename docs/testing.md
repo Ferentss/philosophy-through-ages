@@ -4,16 +4,16 @@
 
 | Команда | Результат |
 |---|---|
-| `npm test` | **18/18** локальних тестів пройшли: 14 тестів API/JSON/workspace + 4 фронтенд smoke |
+| `npm test` | **20/20** локальних тестів пройшли: 16 тестів API/JSON/workspace/setup + 4 фронтенд smoke |
 | `tsc --project frontend/tsconfig.json --noEmit` | Успішно з глобальним TypeScript 5.8.3 та тимчасовим shim `vite/client` (npm-пакети не встановлені) |
 | `node --check scripts/setup.mjs` | Успішно |
 | `node --check scripts/dev.mjs` | Успішно |
-| Перевірка package.json та lock-root | Залежності root і lock збігаються |
-| `git log --oneline -7` | Сім локальних Git-комітів |
+| Перевірка package.json та lock-root | Прямі залежності збігаються, але lock CMS неповний: бракує транзитивних пакунків |
+| `git log --oneline -8` | Вісім локальних Git-комітів (включно з виправленням npm setup) |
 
 ## Не вдалося перевірити
 
-- `npm ci` та повну production-збірку frontend/CMS: npm registry недоступний (EAI_AGAIN).
+- `npm install` для CMS завершується `EAI_AGAIN`, оскільки npm registry недоступний. Тому повний CMS lock-файл потрібно відновити на комп’ютері користувача, після цього перевірити `npm ci`. Production-збірки frontend/CMS тут не перевірені.
 - CMS `npm run typecheck` і генерацію `payload-types.ts`: потребують npm-пакетів.
 - Схему PostgreSQL, застосування двох міграцій, seed та збереження даних: немає робочої тестової бази.
 - Живі `GET /api/common`, `GET /api/page`, адмінпанель, створення/редагування записів. Локальні API-тести викликали handler із *mock* Payload і перевірили лише його логіку, а не реальний сервер.
@@ -21,6 +21,8 @@
 - Публікацію на Vercel, Blob storage й CORS між реальними доменами: немає облікових даних.
 
 ## Завершальна перевірка у VS Code
+
+Після `npm run setup` CMS-скрипт оновить `cms/package-lock.json` через `npm install`; цей оновлений файл потрібно закомітити та перевірити за допомогою `npm ci`.
 
 ```powershell
 npm run setup
