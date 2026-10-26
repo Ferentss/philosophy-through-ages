@@ -77,8 +77,10 @@ async function seed() {
       ],
     } as never })
   }
-  // Не перезаписуємо Common після першого запуску: ручні правки залишаються.
-  if (!found.docs.length) {
+  // Якщо Global ще не заповнений, додаємо навігацію.
+  // Відредаговані адміністратором значення при повторному запуску залишаються.
+  const currentCommon = await payload.findGlobal({ slug: 'common', overrideAccess: true })
+  if (!currentCommon.siteName || !currentCommon.menu?.length) {
     await payload.updateGlobal({ slug:'common', overrideAccess:true, data:{
       siteName:'Філософія крізь віки', logoText:'Філософія крізь віки',
       menu:[
