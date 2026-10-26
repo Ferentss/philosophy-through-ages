@@ -15,6 +15,6 @@
     "build:cms": "npm --prefix cms run build",
     "test:site": "npm --prefix frontend test",
     "test:cms": "npm --prefix cms test",
-    "test": "node --test tests/*.test.mjs && npm --prefix frontend test"
+    "test": "node --experimental-strip-types --test tests/*.test.mjs && npm --prefix frontend test"
   }
 }
