@@ -69,6 +69,8 @@ npm run seed
 | Старт та перевірки VS Code | `.vscode/`, `scripts/` |
 | Звіт викладачу | `docs/report.md` |
 
+**Мова комітів — українська.** Історія з 9 комітів доступна через `git log --oneline -9` і пояснена в `docs/git-history.md`. Приклади TypeScript для вимог викладача 3.3 наведено в `docs/typescript.md`.
+
 ## Архітектура і функції
 
 - `frontend/` — **Vite + Vanilla TypeScript**, одна публічна сторінка `/`. Header, Hero, Про філософію, Епохи, Мислителі, Питання, Цитати, Про проєкт, Footer. Адаптивне меню, модальне вікно мислителя, акуратні анімації, перемикач ідей.
@@ -88,8 +90,10 @@ npm run dev:site         # тільки Vite сайт
 npm run seed             # початкові дані без масового дублювання
 npm run typecheck:site  # перевірка TypeScript сайту
 npm run typecheck:cms   # перевірка TypeScript CMS
+npm run typecheck       # обидві перевірки TypeScript
 npm run build:site      # production-збірка Vite
 npm run build:cms       # production-збірка Next.js / Payload
+npm run build           # обидві збірки послідовно
 npm run test            # локальні перевірки структури й фронтенду
 ```
 
