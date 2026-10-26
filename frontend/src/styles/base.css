@@ -45,3 +45,28 @@ button,a{font:inherit}a{color:inherit}button{cursor:pointer}img{max-width:100%;d
 @media(max-width:680px){.container{width:min(100% - 36px,520px)}.section{padding:78px 0;scroll-margin-top:72px}.section-heading{margin-bottom:33px}.section-title{font-size:47px}.hero{padding:25px 0 78px;min-height:auto}.hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:0;min-height:auto}.hero-copy{padding:54px 0 0}.hero-title{font-size:clamp(72px,13vw,98px);max-width:470px;margin:28px 0 22px}.hero-subtitle{font-size:13px;line-height:1.85}.hero-actions{gap:11px;margin-top:27px}.hero-actions .button{font-size:11px;padding:14px 15px}.hero-visual{min-height:0;align-self:center;width:100%;max-height:460px;overflow:hidden}.hero-art{width:min(100%,430px);max-height:460px}.visual-caption{right:4%;bottom:13px}.hero-index{bottom:20px;left:18px}.topic-grid{grid-template-columns:1fr 1fr;gap:11px}.topic-card{padding:22px 18px;min-height:206px}.topic-card h3{font-size:26px}.topic-card p{font-size:11px}.about-intro{font-size:26px}.epoch-grid{grid-template-columns:1fr 1fr}.epoch-photo{height:190px}.epoch-info h3{font-size:27px}.epoch-info{padding:18px 14px}.thinker-grid{grid-template-columns:1fr 1fr;gap:12px}.thinker-photo{height:220px}.thinker-copy{padding:16px}.thinker-copy h3{font-size:28px}.thinker-copy p{font-size:11px}.question-layout{grid-template-columns:1fr;gap:20px}.question-head>p{max-width:540px}.quote-frame{min-height:300px}.project-layout{grid-template-columns:1fr}.project-monogram{display:none}.footer-content{grid-template-columns:1fr;gap:32px}.dialog-inner{grid-template-columns:1fr}.dialog-portrait{min-height:0;height:230px}.dialog-content{padding:28px 27px 38px}.dialog-content h2{font-size:46px}}
 @media(max-width:390px){.brand{font-size:20px}.brand-mark{height:32px;width:32px;line-height:29px}.section-title{font-size:43px}.epoch-grid,.thinker-grid{grid-template-columns:1fr}.epoch-photo{height:200px}.thinker-photo{height:300px}.topic-grid{grid-template-columns:1fr}.topic-card{min-height:0}.hero-actions{flex-direction:column}.hero-actions .button{width:100%}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* Демо позначено окремо: реальний вміст зазвичай надходить з Payload CMS. */
+.preview-banner {
+  position: relative;
+  z-index: 35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 32px;
+  flex-wrap: wrap;
+  background: #d8b477;
+  color: #172021;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.preview-banner a { color: #172021; text-underline-offset: 3px; }
+.error-state { background: radial-gradient(ellipse at 50% 24%,#30302b 0%,#11161b 63%); min-height: 100vh; }
+.error-state > p:not(.error-detail) { max-width: 540px; line-height: 1.85; }
+.error-state a.button-outline { margin-top: 0; }
+@media (max-width:680px) {
+  .error-state h1 { font-size: 40px; }
+  .preview-banner { font-size: 10px; }
+}
