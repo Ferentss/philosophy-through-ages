@@ -5,50 +5,100 @@
       "label": "1. Встановити залежності",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "setup"],
-      "options": { "cwd": "${workspaceFolder}" },
+      "args": [
+        "run",
+        "setup"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "problemMatcher": []
     },
     {
       "label": "2. Запустити CMS і сайт",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "dev"],
-      "options": { "cwd": "${workspaceFolder}" },
+      "args": [
+        "run",
+        "dev"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "isBackground": true,
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "dedicated" }
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
     },
     {
       "label": "3. Заповнити базу",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "seed"],
-      "options": { "cwd": "${workspaceFolder}" },
+      "args": [
+        "run",
+        "seed"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "problemMatcher": []
     },
     {
       "label": "4. Перевірити TypeScript сайту",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "typecheck:site"],
-      "options": { "cwd": "${workspaceFolder}" },
-      "problemMatcher": ["$tsc"]
+      "args": [
+        "run",
+        "typecheck:site"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$tsc"
+      ]
     },
     {
       "label": "5. Перевірити CMS",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "typecheck:cms"],
-      "options": { "cwd": "${workspaceFolder}" },
-      "problemMatcher": ["$tsc"]
+      "args": [
+        "run",
+        "typecheck:cms"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$tsc"
+      ]
     },
     {
       "label": "6. Тести сайту",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "test:site"],
-      "options": { "cwd": "${workspaceFolder}" },
+      "args": [
+        "run",
+        "test:site"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "7. Запустити всі локальні тести",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "test"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "problemMatcher": []
     }
   ]
