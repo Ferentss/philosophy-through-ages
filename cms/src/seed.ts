@@ -93,6 +93,6 @@ async function seed() {
     } })
   }
   payload.logger.info('Seed завершено: дані додано без дублювання; попередні зміни не перезаписано.')
-  await payload.db.destroy()
+  await payload.db.destroy?.()
 }
 seed().catch((error: unknown) => { console.error(error); process.exitCode = 1 })

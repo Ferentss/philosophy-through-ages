@@ -104,7 +104,7 @@ export const pageEndpoint: Endpoint = {
   path: '/page',
   method: 'get',
   handler: async (req) => {
-    const params = new URL(req.url).searchParams
+    const params = new URL(req.url ?? 'http://localhost/').searchParams
     const paths = params.getAll('path')
     const requestedPath = paths.length === 1 && [...params.keys()].every((key) => key === 'path')
       ? paths[0]
